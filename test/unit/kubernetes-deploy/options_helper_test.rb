@@ -39,7 +39,7 @@ class OptionsHelperTest < KubernetesDeploy::TestCase
     input.rewind
     $stdin = input
 
-    KubernetesDeploy::OptionsHelper.with_consolidated_template_dir([fixture_path('hello-cloud')]) do |template_dir|
+    KubernetesDeploy::OptionsHelper.with_consolidated_template_dir([fixture_path('hello-cloud'), '-']) do |template_dir|
       assert_equal(
         File.read(File.join(template_dir, KubernetesDeploy::OptionsHelper::STDIN_TEMP_FILE)),
         File.read(File.join(fixture_path('for_unit_tests'), 'service_test.yml'))
@@ -85,7 +85,7 @@ class OptionsHelperTest < KubernetesDeploy::TestCase
     input.rewind
     $stdin = input
 
-    KubernetesDeploy::OptionsHelper.with_consolidated_template_dir([]) do |template_dir|
+    KubernetesDeploy::OptionsHelper.with_consolidated_template_dir(['-']) do |template_dir|
       split_templates = File.read(
         File.join(template_dir, KubernetesDeploy::OptionsHelper::STDIN_TEMP_FILE)
       ).split(/^---$/).map(&:strip).reject(&:empty?)
