@@ -23,7 +23,7 @@ ARGV.options do |opts|
   opts.on("--no-prune", "Disable deletion of resources that do not appear in the template dir") { prune = false }
   opts.on("--template-dir=DIR",
     "Set the template dir (default: config/deploy/$ENVIRONMENT). " \
-    "Set this flag multiple times to use templates from different directories" ) do |d|
+    "Set this flag multiple times to use templates from multiple directories" ) do |d|
     template_dirs << d
   end
   opts.on("--verbose-log-prefix", "Add [context][namespace] to the log prefix") { verbose_log_prefix = true }

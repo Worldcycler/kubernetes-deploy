@@ -14,7 +14,7 @@ ARGV.options do |opts|
     "(format: k1=v1,k2=v2, JSON string or file (JSON or YAML) path prefixed by '@')") { |b| parser.add(b) }
   opts.on("--template-dir=DIR",
     "Set the template dir (default: config/deploy/$ENVIRONMENT). " \
-    "Set this flag multiple times to use templates from different directories" ) do |d|
+    "Set this flag multiple times to use templates from multiple directories" ) do |d|
     template_dirs << d
   end
   opts.parse!

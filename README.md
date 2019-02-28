@@ -102,7 +102,7 @@ offical compatibility chart below.
 
 ## Usage
 
-`kubernetes-deploy <app's namespace> <kube context> [OPTIONS] [filenames...]`
+`kubernetes-deploy <app's namespace> <kube context>`
 
 *Environment variables:*
 
@@ -122,7 +122,7 @@ Refer to `kubernetes-deploy --help` for the authoritative set of options.
 - `--no-prune`: Skips pruning of resources that are no longer in your Kubernetes template set. Not recommended, as it allows your namespace to accumulate cruft that is not reflected in your deploy directory.
 - `--max-watch-seconds=seconds`: Raise a timeout error if it takes longer than _seconds_ for any
 resource to deploy.
-- `kubernetes-deploy` also supports reading from STDIN. If combined with the `[filenames...]` option, you must specify `-` in the filename list as well. Example: `cat templates_from_stdin/*.yml | kubernetes-deploy ns ctx --template-dir=template_dir another_template.yml -`. Ensure your yamls are separated with `---` when using this feature.
+- `kubernetes-deploy` also supports reading from STDIN. You can do this by using `--template-dir=-`. Example: `cat templates_from_stdin/*.yml | kubernetes-deploy ns ctx --template-dir=- --template-dir=another_template_dir `. Ensure the templates you are reading in are separated by `---` when using this feature.
 
 
 ### Using templates and variables
