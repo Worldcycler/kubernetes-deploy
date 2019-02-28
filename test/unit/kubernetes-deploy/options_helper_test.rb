@@ -22,7 +22,7 @@ class OptionsHelperTest < KubernetesDeploy::TestCase
     end
   end
 
-  def test_missing_template_dir_no_extra_input
+  def test_missing_template_dir_raises
     assert_raises(KubernetesDeploy::OptionsHelper::OptionsError) do
       KubernetesDeploy::OptionsHelper.with_consolidated_template_dir([]) do
       end
@@ -68,7 +68,7 @@ class OptionsHelperTest < KubernetesDeploy::TestCase
     $stdin = old_stdin
   end
 
-  def test_no_template_dir_with_stdin
+  def test_only_stdin_template_dir
     old_stdin = $stdin
     fixture_yamls = []
     stdin_yamls = []
